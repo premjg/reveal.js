@@ -26,6 +26,9 @@ var Reveal = (function(){
 			// Enable keyboard shortcuts for navigation
 			keyboard: true,
 
+			// Enable keyboard shortcuts for navigation
+			touch: true,
+
 			// Loop the presentation
 			loop: false,
 
@@ -238,10 +241,13 @@ var Reveal = (function(){
 	}
 
 	function addEventListeners() {
-		document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-		document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-		document.addEventListener( 'touchend', onDocumentTouchEnd, false );
 		window.addEventListener( 'hashchange', onWindowHashChange, false );
+
+		if( config.touch ) {
+			document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+			document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+			document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+		}
 
 		if( config.keyboard ) {
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
